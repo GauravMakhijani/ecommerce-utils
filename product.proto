@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package products;
+
+option go_package = "products/productspb";
+
+service ProductService {
+  rpc GetProductById(GetProductByIdRequest) returns (GetProductByIdResponse) {}
+  rpc UpdateProductQTY(UpdateProductQTYRequest) returns (UpdateProductQTYResponse) {}
+}
+
+message GetProductByIdRequest {
+  uint64 productId = 1;
+}
+
+message Product {
+  uint64 id = 1;
+  string name = 2;
+  string category = 3;
+  double price = 4;
+  uint64 quantity = 5;
+}
+message GetProductByIdResponse {
+  Product product = 1;
+}
+
+
+message UpdateProductQTYRequest {
+  uint64 productId = 1;
+  uint64 quantity = 2;
+}
+
+message UpdateProductQTYResponse {
+  bool Success = 1;
+}
